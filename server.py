@@ -15,12 +15,12 @@ def api1():
                 try:
                     users.get(content['login']).get('message')[content['to']]= users.get(content['login']).get('message').get(content['to'])+content['to']+': '+content['text']+'\n'
                     users.get(content['to']).get('message')[content['login']] = users.get(content['to']).get(
-                    'message').get(content['login']) + content['to'] + ': ' + content['text'] + '\n'
+                    'message').get(content['login']) + content['login'] + ': ' + content['text'] + '\n'
 
                 except:
                     try:
                         users.get(content['login']).get('message')[content['to']] =  content['to'] + ': ' + content['text'] + '\n'
-                        users.get(content['to']).get('message')[content['login']] = content['to'] + ': ' + content['text'] + '\n'
+                        users.get(content['to']).get('message')[content['login']] = content['login'] + ': ' + content['text'] + '\n'
                     except Exception as e:
                         print(e)
                 return jsonify({'name':'NoName.MessengeR','api_version':'0.1','state':'OK'})
